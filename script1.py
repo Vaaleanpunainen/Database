@@ -34,4 +34,13 @@ def delete_values(item):
 
 # delete_values('Water')
 
+def update_values(quantity,price,item):
+    conn=sqlite3.connect("lite.db")
+    cur=conn.cursor()
+    cur.execute("UPDATE store SET quantity=?, price=? WHERE item=?",(quantity,price,item))
+    conn.commit()
+    conn.close()
+
+update_values(49,25,"Wine")
+
 print(view())
